@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/navigation.xml"
+            app:startDestination="@id/homeFragment">
+
+    <fragment android:id="@+id/homeFragment"
+              android:name="com.techhousestudio.ucsp_gift.ui.HomeFragment"
+              tools:layout="@layout/fragment_home"
+              android:label="Gifts Service">
+        <action android:id="@+id/action_homeFragment_to_aboutFragment"
+                app:destination="@id/orderHistoryFragment"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right" app:popUpTo="@+id/homeFragment"/>
+        <action android:id="@+id/action_homeFragment_to_favouriteFragment"
+                app:destination="@id/favouriteFragment"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment android:id="@+id/orderHistoryFragment"
+              android:name="com.techhousestudio.ucsp_gift.ui.OrderHistoryFragment"
+              android:label="Order History"
+              tools:layout="@layout/fragment_order_history"/>
+    <fragment android:id="@+id/favouriteFragment"
+              tools:layout="@layout/fragment_favourite"
+              android:name="com.techhousestudio.ucsp_gift.ui.FavouriteFragment"
+              android:label="Favourite Gifts"/>
+
+
+    <dialog android:id="@+id/filterDialogFragment"
+            android:name="com.techhousestudio.ucsp_gift.ui.FilterDialogFragment"
+            tools:layout="@layout/fragment_filter_dialog"
+            android:label="Filter Dialog"/>
+
+    <fragment android:id="@+id/accountFragment"
+              android:name="com.techhousestudio.ucsp_gift.ui.AccountFragment"
+              android:label="fragment_account"
+              tools:layout="@layout/fragment_account"/>
+</navigation>

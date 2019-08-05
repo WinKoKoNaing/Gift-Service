@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">PayLitePar</string>
+    <string name="order_history">Order History</string>
+    <string name="favourite">Favourite</string>
+    <string name="price">$100</string>
+    <string name="item_name">Item Name</string>
+    <string name="gift_image">Gift Image</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="account">Account</string>
+    <string name="setting">Setting</string>
+    <string name="home">Home</string>
+    <string name="_5_5">5.5</string>
+</resources>
