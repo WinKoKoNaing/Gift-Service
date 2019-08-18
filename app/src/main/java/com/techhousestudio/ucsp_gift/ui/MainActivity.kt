@@ -1,20 +1,14 @@
 package com.techhousestudio.ucsp_gift.ui
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import androidx.activity.OnBackPressedCallback
-import androidx.activity.OnBackPressedDispatcher
-import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.ui.*
-import com.google.android.material.navigation.NavigationView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.techhousestudio.ucsp_gift.R
 import com.techhousestudio.ucsp_gift.databinding.ActivityMainBinding
 
@@ -36,33 +30,53 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment)
 
 
+
+
+
+
         appBarConfiguration = AppBarConfiguration(
             setOf(R.id.homeFragment, R.id.favouriteFragment), binding.drawerLayout
         )
 
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        binding.navView.setupWithNavController(navController)
+        val navGraphIds = listOf(R.navigation.navigation)
+
+
+        var bottomNavigationView: BottomNavigationView
+//        binding.n.setupWithNavController(
+//            navGraphIds = navGraphIds,
+//            fragmentManager = supportFragmentManager,
+//            containerId = R.id.nav_host_fragment,
+//            intent = intent
+//        );
 
 
 
 
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.favouriteFragment || destination.id == R.id.homeFragment) {
-                binding.fab.setImageResource(R.drawable.ic_fab_filter)
-                binding.fab.setOnClickListener {
-                    findNavController(R.id.nav_host_fragment).navigate(R.id.filterDialogFragment)
-
-                }
+            if (destination.id == R.id.giftDetailFragment) {
+                binding.fab.visibility = View.GONE
+                binding.bar.visibility = View.GONE
             } else {
-                binding.fab.setImageResource(R.drawable.ic_fab_chat)
-                binding.fab.setOnClickListener {
-                    val chat = ChatBottomSheetDialogFragment()
-                    chat.show(supportFragmentManager, "chat")
-
-                }
+                binding.fab.visibility = View.VISIBLE
+                binding.bar.visibility = View.VISIBLE
             }
+//            if (destination.id == R.id.favouriteFragment || destination.id == R.id.homeFragment) {
+//                binding.fab.setImageResource(R.drawable.ic_fab_filter)
+//                binding.fab.setOnClickListener {
+//                    findNavController(R.id.nav_host_fragment).navigate(R.id.filterDialogFragment)
+//
+//                }
+//            } else {
+//                binding.fab.setImageResource(R.drawable.ic_fab_chat)
+//                binding.fab.setOnClickListener {
+//                    val chat = ChatBottomSheetDialogFragment()
+//                    chat.show(supportFragmentManager, "chat")
+//
+//                }
+//            }
         }
 
     }

@@ -6,6 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardUseCompatPadding="true"
+        app:cardElevation="2dp"
         app:cardBackgroundColor="@android:color/white"
         app:cardCornerRadius="2dp">
 
@@ -44,7 +45,7 @@
                 android:drawableEnd="@drawable/ic_star"
                 android:text="@string/_5_5"
                 android:textSize="18sp"
-                android:fontFamily="@font/roboto"
+                android:fontFamily="@font/montserrat"
                 app:rippleColor="@color/colorPrimary"
                 app:layout_constraintTop_toTopOf="parent"
                 android:contentDescription="@string/favourite"
@@ -76,7 +77,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="16dp"
-                android:fontFamily="@font/belgrano"/>
+                android:fontFamily="@font/roboto"/>
         <com.google.android.material.textview.MaterialTextView
                 android:text="@string/price"
                 android:layout_width="0dp"
@@ -89,6 +90,6 @@
                 android:gravity="center_vertical"
                 android:layout_marginTop="8dp"
                 android:textSize="15sp"
-                android:fontFamily="@font/aldrich"/>
+                android:fontFamily="@font/days_one"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

@@ -6,30 +6,128 @@
     </data>
     <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".ui.HomeFragment"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
+
         <Button
                 android:id="@+id/btnSave"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 android:text="Save Data"/>
-
-
-        <androidx.viewpager.widget.ViewPager
-                android:id="@+id/imageSlideViewPager"
+        <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="200dp">
 
-        </androidx.viewpager.widget.ViewPager>
-        <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tab"
+            <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/imageSlideViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+            </androidx.viewpager.widget.ViewPager>
+            <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tab"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tabBackground="@drawable/tab_selector"
+                    android:layout_alignParentBottom="true"
+                    android:background="@null"
+                    app:tabIndicatorHeight="0dp"
+                    app:tabGravity="center"/>
+        </RelativeLayout>
+        <TextView
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:padding="10dp"
+                android:textSize="20sp"
+                android:singleLine="true"
+                android:text="Search by Tag"
+                android:textStyle="bold"
+                android:layout_height="?attr/actionBarSize"
+                android:fontFamily="@font/aldrich"/>
+        <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:tabBackground="@drawable/tab_selector"
-                app:tabIndicatorHeight="0dp"
-                app:tabGravity="center"/>
+                android:scrollbarSize="1dp">
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+                <com.google.android.material.chip.ChipGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:singleLine="true">
+
+                    <com.google.android.material.chip.Chip
+                            style="@style/Widget.MaterialComponents.Chip.Action"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Toys"/>
+                    <com.google.android.material.chip.Chip
+                            style="@style/Widget.MaterialComponents.Chip.Action"
+                            app:chipIcon="@drawable/ic_home"
+                            app:chipIconEnabled="true"
+                            app:iconStartPadding="5dp"
+                            android:stateListAnimator="@anim/fade_in"
+                            android:animateLayoutChanges="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Animals"/>
+                    <com.google.android.material.chip.Chip
+                            style="@style/Widget.MaterialComponents.Chip.Action"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Avenger"/>
+                    <com.google.android.material.chip.Chip
+                            style="@style/Widget.MaterialComponents.Chip.Action"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Toys"/>
+                    <com.google.android.material.chip.Chip
+                            style="@style/Widget.MaterialComponents.Chip.Action"
+                            app:chipIcon="@drawable/ic_home"
+                            app:chipIconEnabled="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Animals"/>
+                    <com.google.android.material.chip.Chip
+                            style="@style/Widget.MaterialComponents.Chip.Action"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Avenger"/>
+                    <com.google.android.material.chip.Chip
+                            style="@style/Widget.MaterialComponents.Chip.Action"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Toys"/>
+                    <com.google.android.material.chip.Chip
+                            style="@style/Widget.MaterialComponents.Chip.Action"
+                            app:chipIcon="@drawable/ic_home"
+                            app:chipIconEnabled="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Animals"/>
+                    <com.google.android.material.chip.Chip
+                            style="@style/Widget.MaterialComponents.Chip.Action"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Avenger"/>
+
+                </com.google.android.material.chip.ChipGroup>
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <TextView
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:padding="10dp"
+                android:textSize="20sp"
+                android:singleLine="true"
+                android:text="Popular gifts"
+                android:textStyle="bold"
+                android:layout_height="?attr/actionBarSize"
+                android:fontFamily="@font/aldrich"/>
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -39,6 +137,7 @@
                 tools:listitem="@layout/recycler_home_gift_item_row">
 
         </androidx.recyclerview.widget.RecyclerView>
+
 
         <ProgressBar
                 android:id="@+id/progress_horizontal"

@@ -5,6 +5,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.techhousestudio.ucsp_gift.models.GiftItem
 
 class GiftItemRecyclerAdapter(private val items: ArrayList<GiftItem?>) : RecyclerView.Adapter<GiftItemViewHolder>() {
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GiftItemViewHolder = GiftItemViewHolder(parent)
 
     override fun getItemCount(): Int {

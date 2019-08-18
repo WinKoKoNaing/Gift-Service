@@ -6,12 +6,15 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.material.button.MaterialButton
 import com.techhousestudio.ucsp_gift.R
 import com.techhousestudio.ucsp_gift.models.GiftItem
-import com.techhousestudio.ucsp_gift.ui.GiftDetailActivity
+import com.techhousestudio.ucsp_gift.ui.GiftDetailFragment
+import com.techhousestudio.ucsp_gift.ui.GiftDetailFragmentArgs
+import com.techhousestudio.ucsp_gift.ui.HomeFragmentDirections
 
 class GiftItemViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
 
@@ -26,18 +29,18 @@ class GiftItemViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
     private val tvPrice: TextView = itemView.findViewById(R.id.tvItemPrice)
     private val giftLayout: ConstraintLayout = itemView.findViewById(R.id.giftLayout)
     val btnOrder: MaterialButton = itemView.findViewById(R.id.btnOrder)
+
+
     fun bindTo(giftItem: GiftItem) {
         Glide.with(itemView.context).load(giftItem.giftImage?.get(0)).into(ivItemImage)
         tvPrice.text = "${giftItem.price} kyats"
         tvItemName.text = giftItem.name
 
 
-        giftLayout.setOnClickListener { view ->
+        giftLayout.setOnClickListener {
+            val direction = HomeFragmentDirections.actionHomeFragmentToGiftDetailFragment(giftItem.id!!)
+            it.findNavController().navigate(direction)
 
-            val intent = Intent(view.context, GiftDetailActivity::class.java).apply {
-                putExtra("gift-id", giftItem.id)
-            }
-            view.context.startActivity(intent)
         }
     }
 

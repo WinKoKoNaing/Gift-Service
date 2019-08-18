@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--Deep Orange-->
-    <color name="colorPrimary">#FF5722</color>
-    <color name="colorPrimaryDark">#E64A19</color>
-    <color name="colorAccent">#FF3D00</color>
+    <color name="colorPrimary">#efb31d</color>
+    <color name="colorPrimaryDark">#b88400</color>
+    <color name="colorAccent">#ffe557</color>
     <color name="available_color">#D81B60</color>
     <color name="price_color">#4CAF50</color>
 </resources>

@@ -10,17 +10,17 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".ui.GiftDetailActivity">
-        <com.google.android.material.appbar.AppBarLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            <com.google.android.material.appbar.MaterialToolbar
-                    android:id="@+id/toolbar"
-                    app:title="@{giftItem.name}"
-                    android:layout_width="match_parent"
-                    android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
-                    android:layout_height="?attr/actionBarSize"/>
-        </com.google.android.material.appbar.AppBarLayout>
+            tools:context=".ui.GiftDetailFragment">
+        <!--<com.google.android.material.appbar.AppBarLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content">-->
+            <!--<com.google.android.material.appbar.MaterialToolbar-->
+                    <!--android:id="@+id/toolbar"-->
+                    <!--app:title="@{giftItem.name}"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"-->
+                    <!--android:layout_height="?attr/actionBarSize"/>-->
+        <!--</com.google.android.material.appbar.AppBarLayout>-->
 
 
         <include android:id="@+id/included"

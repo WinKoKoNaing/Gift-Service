@@ -6,46 +6,77 @@
     </data>
     <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            android:layout_height="match_parent">
 
 
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:padding="5dp">
+                android:orientation="vertical">
 
-
+            <TextView
+                    android:id="@+id/tvItemTitle"
+                    android:layout_width="match_parent"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    android:textSize="25sp"
+                    android:textColor="@android:color/white"
+                    android:background="@color/colorPrimary"
+                    android:singleLine="true"
+                    android:text="@{giftItem.name}"
+                    android:textStyle="bold"
+                    android:layout_height="?attr/actionBarSize"
+                    android:fontFamily="@font/playfair_display"/>
             <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     app:cardUseCompatPadding="true"
                     android:layout_height="wrap_content">
+                <!--<RelativeLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:padding="10dp">-->
+
+                    <!--<ImageView-->
+                            <!--android:id="@+id/btnFavourite"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_alignParentRight="true"-->
+                            <!--app:srcCompat="@drawable/ic_fav_border"/>-->
+                    <!--<ImageView-->
+                            <!--android:id="@+id/ivGiftImages"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="200dp"-->
+                            <!--tools:srcCompat="@drawable/ic_launcher_background"/>-->
+                    <!--<Button-->
+                            <!--android:id="@+id/btnImageSwitch"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="50dp"-->
+                            <!--android:gravity="center"-->
+                            <!--android:layout_gravity="center"-->
+                            <!--android:layout_below="@id/ivGiftImages"-->
+                            <!--style="@style/Widget.AppCompat.Button.Borderless"-->
+                            <!--android:textSize="15sp"-->
+                            <!--android:text="next"/>-->
+                <!--</RelativeLayout>-->
                 <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp">
-                    <ImageView
-                            android:id="@+id/btnFavourite"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            app:srcCompat="@drawable/ic_fav_border"/>
-                    <ImageView
-                            android:id="@+id/ivGiftImages"
+                        android:layout_height="200dp">
+
+                    <androidx.viewpager.widget.ViewPager
+                            android:id="@+id/imageSlideViewPager"
                             android:layout_width="match_parent"
-                            android:layout_height="200dp"
-                            tools:srcCompat="@drawable/ic_launcher_background"/>
-                    <Button
-                            android:id="@+id/btnImageSwitch"
-                            android:layout_width="wrap_content"
-                            android:layout_height="50dp"
-                            android:gravity="center"
-                            android:layout_gravity="center"
-                            android:layout_below="@id/ivGiftImages"
-                            style="@style/Widget.AppCompat.Button.Borderless"
-                            android:textSize="15sp"
-                            android:text="next"/>
+                            android:layout_height="match_parent">
+
+                    </androidx.viewpager.widget.ViewPager>
+                    <com.google.android.material.tabs.TabLayout
+                            android:id="@+id/tab"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:tabBackground="@drawable/tab_selector"
+                            android:layout_alignParentBottom="true"
+                            android:background="@null"
+                            app:tabIndicatorHeight="0dp"
+                            app:tabGravity="center"/>
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
@@ -151,7 +182,25 @@
                                 android:textColor="@color/colorPrimaryDark"
                                 android:textSize="15sp"/>
                     </LinearLayout>
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/roboto"
+                            android:drawableStart="@drawable/ic_shop"
+                            android:gravity="center_vertical"
+                            android:padding="10dp"
+                            android:drawablePadding="5dp"
+                            android:text="Name"/>
+                    <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/tvShopName"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/roboto"
+                            android:gravity="center_vertical"
+                            android:padding="5dp"
+                            android:layout_marginStart="30dp"
+                            android:text="Shop Name"/>
+                    <com.google.android.material.textview.MaterialTextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:fontFamily="@font/roboto"
@@ -160,7 +209,7 @@
                             android:padding="10dp"
                             android:drawablePadding="5dp"
                             android:text="Address"/>
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/tvAddress"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -169,7 +218,7 @@
                             android:padding="5dp"
                             android:layout_marginStart="30dp"
                             android:text="Address"/>
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:fontFamily="@font/roboto"
@@ -178,7 +227,7 @@
                             android:gravity="center_vertical"
                             android:drawablePadding="5dp"
                             android:text="Phone Number"/>
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/tvPhoneNumber"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"

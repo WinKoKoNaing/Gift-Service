@@ -8,14 +8,9 @@
               android:name="com.techhousestudio.ucsp_gift.ui.HomeFragment"
               tools:layout="@layout/fragment_home"
               android:label="Gifts Service">
-        <action android:id="@+id/action_homeFragment_to_aboutFragment"
-                app:destination="@id/orderHistoryFragment"
-                app:enterAnim="@anim/slide_in_right"
-                app:exitAnim="@anim/slide_out_left"
-                app:popEnterAnim="@anim/slide_in_left"
-                app:popExitAnim="@anim/slide_out_right" app:popUpTo="@+id/homeFragment"/>
-        <action android:id="@+id/action_homeFragment_to_favouriteFragment"
-                app:destination="@id/favouriteFragment"
+
+        <action android:id="@+id/action_homeFragment_to_giftDetailFragment"
+                app:destination="@id/giftDetailFragment"
                 app:enterAnim="@anim/slide_in_right"
                 app:exitAnim="@anim/slide_out_left"
                 app:popEnterAnim="@anim/slide_in_left"
@@ -40,4 +35,9 @@
               android:name="com.techhousestudio.ucsp_gift.ui.AccountFragment"
               android:label="fragment_account"
               tools:layout="@layout/fragment_account"/>
+    <dialog android:id="@+id/giftDetailFragment"
+              android:name="com.techhousestudio.ucsp_gift.ui.GiftDetailFragment"
+              android:label="GiftDetailFragment">
+        <argument android:name="itemId" app:argType="string"/>
+    </dialog>
 </navigation>

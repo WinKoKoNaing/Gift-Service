@@ -45,9 +45,9 @@
                     android:id="@+id/fab"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_fab_filter"
+                    app:srcCompat="@drawable/ic_fab_chat"
                     app:tint="@android:color/white"
-                    app:backgroundTint="@color/colorAccent"
+                    app:backgroundTint="@color/colorPrimary"
                     app:layout_anchor="@id/bar"/>
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>

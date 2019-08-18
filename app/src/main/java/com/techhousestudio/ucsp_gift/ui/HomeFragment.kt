@@ -6,33 +6,35 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.firebase.ui.firestore.paging.FirestorePagingOptions
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
-import com.techhousestudio.ucsp_gift.R
-import com.techhousestudio.ucsp_gift.adapters.GiftItemAdapter
+import com.google.firebase.firestore.FirebaseFirestoreSettings
+import com.google.firebase.firestore.Query
 import com.techhousestudio.ucsp_gift.adapters.GiftItemRecyclerAdapter
 import com.techhousestudio.ucsp_gift.adapters.ViewPagerAdapter
 import com.techhousestudio.ucsp_gift.databinding.FragmentHomeBinding
 import com.techhousestudio.ucsp_gift.models.GiftItem
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class HomeFragment : Fragment() {
 
     private lateinit var options: FirestorePagingOptions<GiftItem>
     lateinit var binding: FragmentHomeBinding
-    lateinit var adapter: GiftItemAdapter
+    lateinit var adapter: GiftItemRecyclerAdapter
     private val db = FirebaseFirestore.getInstance()
     private lateinit var giftItems: ArrayList<GiftItem?>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d("WKKN","On Create")
+        Log.d("WKKN", "On Create")
+        val settings = FirebaseFirestoreSettings.Builder()
+            .setPersistenceEnabled(true)
+            .build()
+        db.firestoreSettings = settings
 
     }
 
@@ -42,15 +44,15 @@ class HomeFragment : Fragment() {
     ): View? {
 
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
 
 
         // setup layout manager
         binding.giftItemList.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
-// setup page adapter
+        // setup page adapter
         val query = db
-            .collection("gift-items").limit(5)
+            .collection("gift-items").orderBy("name", Query.Direction.DESCENDING).limit(10)
 
 
         Log.d("WKKN", "onCreateView")
@@ -62,43 +64,44 @@ class HomeFragment : Fragment() {
 
 
         options = FirestorePagingOptions.Builder<GiftItem>()
-            .setLifecycleOwner(this)
+            .setLifecycleOwner(this@HomeFragment)
             .setQuery(query, config, GiftItem::class.java)
             .build()
         // adapter
 
-        adapter = GiftItemAdapter(options)
+//        adapter = GiftItemAdapter(options)
 
 //        adapter.setOnOrderButtonClickListener = this
 
-//        query.get().addOnCompleteListener {
-//            giftItems = arrayListOf()
-//
-//            if (it.isSuccessful) {
-//                for (document: DocumentSnapshot in it.result!!.iterator()) {
-//                    val giftItem = document.toObject(GiftItem::class.java)
-//                    giftItems.add(giftItem)
-//                }
-//
-//                adapter = GiftItemRecyclerAdapter(giftItems)
-//                binding.giftItemList.adapter = adapter
-//
-//            }
-//        }
+        query.get().addOnCompleteListener {
+            giftItems = arrayListOf()
 
-        binding.giftItemList.adapter = adapter
+            if (it.isSuccessful) {
+                for (document: DocumentSnapshot in it.result!!.iterator()) {
+                    val giftItem = document.toObject(GiftItem::class.java)
+                    giftItems.add(giftItem)
+                }
+
+                adapter = GiftItemRecyclerAdapter(giftItems)
+                binding.giftItemList.adapter = adapter
+
+            }
+        }
+
+//        binding.giftItemList.adapter = adapter
 
         // setup view pager
         val viewPagerAdapter = ViewPagerAdapter(
             context,
             arrayListOf(
-                "https://travel.jumia.com/blog/mm/wp-content/uploads/2017/03/re1-660x372.jpg",
-                "https://i.ytimg.com/vi/-FDcwbxtBG8/maxresdefault.jpg"
+                "http://www.mustasarepublic.com/wp-content/uploads/2018/11/Create-an-Effective-Video-Advertisement-With-These-9-Simple-Tips-1170x570.jpg",
+                "https://www.codesgesture.com/auth/assets/upload/blog/Video-Advertisement-on-mobile-is-the-best-way-to-reach-your-Audiences.jpg"
             )
         )
-        binding.tab.setupWithViewPager(binding.imageSlideViewPager,true)
-
-        binding.imageSlideViewPager.adapter = viewPagerAdapter
+        binding.apply {
+            tab.setupWithViewPager(imageSlideViewPager, true)
+            imageSlideViewPager.adapter = viewPagerAdapter
+        }
 
 
         // listener
@@ -113,8 +116,15 @@ class HomeFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        Log.d("WKKN", "OnStart")
+
 //        adapter.startListening()
+        Log.d("WKKN", "OnStart")
+//        Log.d("WKKN", ": "+adapter.itemCount)
+//        if (adapter.itemCount <= 1) {
+//
+//        }else{
+//            Log.d("WKKN", ""+adapter.itemCount)
+//        }
 
 
     }
@@ -146,6 +156,7 @@ class HomeFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
 //        adapter.stopListening()
+        Log.d("WKKN", "Destory")
     }
 
 }
